@@ -1,32 +1,33 @@
 import file_rw as rw
-import prediction as pred
 
 import FinanceDataReader as fdr
 from datetime import datetime, timedelta
 
 start_date = datetime.now().date() - timedelta(days=7)
 end_date = datetime.now().date()
-stock_info = rw.JsonRead('info.json') # EC2의 경우, 추후 절대경로 수정 필요
-stock_code = stock_info['stock_code'] # 이거를 json으로 받아와야..
+stock_info = rw.JsonRead("info.json")  # EC2의 경우, 추후 절대경로 수정 필요
+stock_code = stock_info["stock_code"]  # 이거를 json으로 받아와야..
+
 
 def MakeJsonOHLC(f_name, stock_code):
     start_date = datetime.now().date() - timedelta(days=3650)
     end_date = datetime.now().date()
 
     data = fdr.DataReader(stock_code, start_date, end_date)
-    data["time"] = data.index
-    data["time"] = data["time"].dt.strftime("%Y-%m-%d")
-    data = data.reset_index()
-    
-    data.drop(columns=["Volume", "Change","Date"], inplace=True)
-    data=data[['time','Open','High','Low','Close']]
+    data["date"] = data.index
+    data["date"] = data["date"].dt.strftime("%Y-%m-%d")
+    data.drop(columns=["Volume", "Change"], inplace=True)
+    data = data.set_index("date")
+    print(data)
 
     # json 생성 양식은 to_json의 파라미터 조정으로 변경 가능
-    json_data = data.to_json(orient='index')
-    rw.JsonWrite(f_name, json_data)
+    json_data = data.to_json("Price.json", orient="index")
+    print(json_data)
+    # rw.JsonWrite(f_name, json_data)
 
 MakeJsonOHLC("Price.json", stock_code)
 
+#import prediction as pred
 # df_now = fdr.DataReader(stock_code, start=start_date, end=end_date)
 # signal, sharpe = pred.CalculateSignal()
 
@@ -35,7 +36,7 @@ MakeJsonOHLC("Price.json", stock_code)
 
 # elif sharpe <= -2:
 #     sharpe = "매우 낮음"
-    
+
 # elif sharpe <= 0:
 #     sharpe = "낮음"
 
@@ -60,3 +61,5 @@ MakeJsonOHLC("Price.json", stock_code)
 
 # file_name = 'result.json'
 # rw.JsonWrite(file_name, json_data)
+
+
