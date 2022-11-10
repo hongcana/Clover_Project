@@ -144,7 +144,7 @@ def modeling(data, X, X_train, X_test, y_train, y_test, split):
         
         f1_save = f1_score(y_test, cls.predict(X_test))
         #DEBUG
-        print("gamma detected... sharpe = {:.2f}, gamma = {}, f1 = {:.3f}".format(sharpe, i, f1_save))
+        #print("gamma detected... sharpe = {:.2f}, gamma = {}, f1 = {:.3f}".format(sharpe, i, f1_save))
 
         if len(sharpe_list) == 0:
             if np.isnan(sharpe) == True:
@@ -168,7 +168,7 @@ def modeling(data, X, X_train, X_test, y_train, y_test, split):
             if (high_f1 * 0.95 < f1_save) and (high_score < sharpe):
                 
                 # DEBUG
-                print("NEW high score = {:.2f}, sharpe = {:.2f}, gamma = {:.2f}".format(high_score, sharpe, i))
+                #print("NEW high score = {:.2f}, sharpe = {:.2f}, gamma = {:.2f}".format(high_score, sharpe, i))
 
                 high_score = sharpe
                 high_gamma = i
