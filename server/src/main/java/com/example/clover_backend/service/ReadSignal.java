@@ -1,25 +1,28 @@
 package com.example.clover_backend.service;
 
 import com.example.clover_backend.dto.SignalResponse;
-import lombok.RequiredArgsConstructor;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 import org.springframework.stereotype.Service;
 
 import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Path;
 
 @Service
-@RequiredArgsConstructor
 public class ReadSignal {
     public SignalResponse readSignal() throws IOException, ParseException {
 
         JSONParser jsonParser  = new JSONParser();
 
-        // Reader reader = new FileReader("/home/ubuntu/python/signal.json");
-        String path = "signal.json";
-        FileReader rd = new FileReader(path);
-        JSONObject jsonObject = (JSONObject) jsonParser.parse(rd);
+        String path = "/home/ubuntu/Clover_Project/Python/signal.json";
+	String str = Files.readString(Path.of(path));
+	str = str.substring(1, str.length());
+
+        JSONObject jsonObject = (JSONObject) jsonParser.parse(str);
+
+	System.out.println(jsonObject);
 
         String stockCode = (String) jsonObject.get("stock_code");
         String date = (String) jsonObject.get("date");
