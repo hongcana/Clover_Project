@@ -1,23 +1,20 @@
 import React, { useEffect, useRef } from 'react';
 import { DrawChart } from './DrawChart';
-import { Box } from '@mui/system';
-import { Autocomplete, Grid, Paper } from '@mui/material';
+import { Box, typography } from '@mui/system';
+import { Grid, Paper } from '@mui/material';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
+
+import Signal from './Signal.js';
 import SearchBar from '../SearchBar/SearchBar.js';
 import CloverLogo from '../../../styles/Img/Clover_logo.png';
 
-import './ChartPage.css'
 
 function ChartPage() {
   const location = useLocation();
   const navigate = useNavigate();
   const Code = location.state.code
   const Name = location.state.name
-  const Ex_path = location.state.ex_path
 
-  const logoClick = event => {
-    navigate('/')
-  }
   return (
     <Box>
       <Box sx={{ paddingTop: 5, paddingLeft: 10 }} className='TopBox'>
@@ -58,8 +55,7 @@ function ChartPage() {
             </Paper>
           </Grid>
           <Grid item xs={4}>
-            <Paper
-              elevation={0}
+            <Box
               sx={{
                 typography: {
                   fontSize: 20,
@@ -68,7 +64,7 @@ function ChartPage() {
                 }
               }}>
               {Code}
-            </Paper>
+            </Box>
           </Grid>
         </Grid>
         <Grid container
@@ -79,14 +75,16 @@ function ChartPage() {
             sx={{ m: 0 }}
           >
             <Paper sx={{ padding: 3, width: 0.9, margin: 0, height: '50vh' }}>
-              <DrawChart data={Ex_path} />
+              <DrawChart />
             </Paper>
           </Grid>
           <Grid item
             xs={4}>
-            <Paper sx={{ padding: 3, width: 1, height: '50vh' }}>
-              신뢰도 써야하는데 내일까지 꼭 할게용ㅎㅎ
-            </Paper>
+            <Box sx={{
+              padding: 3, width: 1, height: '50vh'
+            }}>
+              <Signal />
+            </Box>
           </Grid>
         </Grid>
       </Box >

@@ -1,10 +1,10 @@
 import React, { useEffect, useRef } from 'react';
-import preConvertData from '../Data/Price.json';
+import preConvertData from '../Data/price.json';
 import { createChart, CrosshairMode } from 'lightweight-charts';
 import { Paper } from '@mui/material';
 import { useLocation } from 'react-router-dom';
 
-function DrawChart(data) {
+function DrawChart() {
     const chartContainerRef = useRef();
     const chart = useRef();
     const resizeObserver = useRef();

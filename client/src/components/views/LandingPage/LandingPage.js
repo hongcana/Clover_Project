@@ -6,22 +6,8 @@ import { Box } from '@mui/system';
 import SearchBar from '../SearchBar/SearchBar.js';
 import CloverLogo from '../../../styles/Img/Clover_logo.png';
 
-import './LandingPage.css';
-
 function LandingPage() {
   return (
-    // <div>
-    //   <div className='search'>
-    //     <input type='text' placeholder=' Search...' className='search-box'
-    //       onChange={e => setQuery(e.target.value)}
-    //     />
-    //     <button className='search-button'
-    //       onClick={e => onSearch(query)}>Search</button>
-    //   </div>
-    //   <div className='dropbox'>
-    //     <List data={search(StockItem)} />
-    //   </div>
-    // </div>
     <Grid
       display='flex'
       flexDirection='column'
