@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react'
-import StockItem from '../Data/Stocks.json';
+// import StockItem from '../Data/Stocks.json';
 import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete'
 import { useLocation, useNavigate } from 'react-router-dom';
+import axios from 'axios'
 
 function SearchBar() {
+    const [StockItem, setStockItem] = useState([]);
     const keys = ['code', 'name']
     const [query, setQuery] = useState('');
     const [obj, setObj] = useState(null);
@@ -13,9 +15,33 @@ function SearchBar() {
     }
     const navigate = useNavigate();
     const location = useLocation();
+
+    useEffect(() => {
+        async function fetchData() {
+            try {
+                const res = await axios.get("http://15.165.181.15:8080/search/allItems")
+                setStockItem(res.data)
+            }
+            catch (e) {
+                console.error(e.message)
+            }
+        }
+        fetchData()
+    }, [])
+
+
     useEffect(() => {
         if (obj != null) {
-            //if (location.pathname === '/')
+            // async function pushData() {
+            //     try {
+            //         const data = await axios.post("http://15.165.181.15:8080/info/signal", { stock_code: obj.code })
+
+            //     }
+            //     catch (e) {
+            //         console.error(e.message)
+            //     }
+            // }
+            // pushData()
             navigate("/chart", { state: { code: obj.code, name: obj.name, ex_path: location.pathname } });
         }
     }, [obj])

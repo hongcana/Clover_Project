@@ -1,9 +1,9 @@
 import React, { useEffect, useRef } from 'react';
-import { DrawChart } from './DrawChart';
 import { Box, typography } from '@mui/system';
 import { Grid, Paper } from '@mui/material';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 
+import { DrawChart } from './DrawChart';
 import Signal from './Signal.js';
 import SearchBar from '../SearchBar/SearchBar.js';
 import CloverLogo from '../../../styles/Img/Clover_logo.png';
