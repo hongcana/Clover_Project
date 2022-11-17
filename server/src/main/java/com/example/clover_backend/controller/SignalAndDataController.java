@@ -18,8 +18,8 @@ public class SignalAndDataController {
 
     private final SignalAndDataService signalAndDataService;
 
-    @PostMapping("/signal")
-    public SignalResponse getSignal(@RequestBody JSONObject stock_code) throws IOException, ParseException {
+    @GetMapping("/signal")
+    public SignalResponse getSignal(@RequestParam String stock_code) throws IOException, ParseException {
         return signalAndDataService.getSignal(stock_code);
     }
 
