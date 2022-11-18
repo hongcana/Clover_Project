@@ -7,24 +7,24 @@ import SentimentVeryDissatisfiedIcon from '@mui/icons-material/SentimentVeryDiss
 import { Box, typography } from '@mui/system';
 
 import SignalInfo from '../Data/signal.json';
-//import axios from 'axios'
+import axios from 'axios'
 
 
 function Signal() {
-    // const [Signalinfo, setSignalinfo] = useState([]);
-    // useEffect(() => {
-    //     async function fetchData() {
-    //         try {
-    //             const res = await axios.get("http://15.165.181.15:8080/info/signal")
-    //             setSignalinfo(res.data);
-    //         }
-    //         catch (e) {
-    //             console.error(e.message)
-    //         }
-    //     }
-    //     fetchData()
-    // }, [])
-    if (SignalInfo['signal'] === 0) {
+    const [Signalinfo, setSignalinfo] = useState(null);
+    useEffect(() => {
+        async function fetchData() {
+            try {
+                const res = await axios.get("http://15.165.181.15:8080/info/signal")
+                setSignalinfo(res.data);
+            }
+            catch (e) {
+                console.error(e.message)
+            }
+        }
+        fetchData()
+    }, [])
+    if (SignalInfo['signal'] === 1) { //Signalinfo 로 바꿀것.
         return (
             <Box>
                 <Box sx={{
@@ -38,7 +38,7 @@ function Signal() {
                     <SentimentSatisfiedAltIcon
                         sx={{ fontSize: 100 }}
                     />
-                    매도
+                    매수
                 </Box>
                 <Box sx={{
                     padding: 3,
@@ -67,7 +67,7 @@ function Signal() {
                 <SentimentNeutralIcon
                     sx={{ fontSize: 100 }}
                 />
-                매수
+                매도
             </Box>
             <Box sx={{
                 padding: 3,
