@@ -34,7 +34,7 @@ function SearchBar() {
         if (obj != null) {
             async function pushData() {
                 try {
-                    const data = await axios.post("http://15.165.181.15:8080/search/eachItem", { "stock_code": "obj.code" })
+                    const data = await axios.post("http://15.165.181.15:8080/search/eachItem", { "stock_code": obj.code })
                 }
                 catch (e) {
                     console.error(e.message)
