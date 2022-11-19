@@ -3,6 +3,7 @@ package com.example.clover_backend.service;
 import com.example.clover_backend.dto.PriceData;
 import com.example.clover_backend.dto.SignalResponse;
 import lombok.RequiredArgsConstructor;
+import org.json.simple.JSONObject;
 import org.json.simple.parser.ParseException;
 import org.springframework.stereotype.Service;
 
@@ -36,7 +37,7 @@ public class SignalAndDataService {
         return readSignal.readSignal();
     }
 
-    public TreeMap<String, PriceData> getData(String stock_code) throws IOException, ParseException {
+    public TreeMap<String, PriceData> getData() throws IOException, ParseException {
         return readData.readData();
     }
 }
