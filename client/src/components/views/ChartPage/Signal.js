@@ -1,6 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import MoodBadIcon from '@mui/icons-material/MoodBad';
-import MoodIcon from '@mui/icons-material/Mood';
 import SentimentSatisfiedAltIcon from '@mui/icons-material/SentimentSatisfiedAlt';
 import SentimentNeutralIcon from '@mui/icons-material/SentimentNeutral';
 import SentimentVeryDissatisfiedIcon from '@mui/icons-material/SentimentVeryDissatisfied';
@@ -10,12 +8,20 @@ import SignalInfo from '../Data/signal.json';
 import axios from 'axios'
 
 
-function Signal() {
+function Signal(code) {
     const [Signalinfo, setSignalinfo] = useState(null);
     useEffect(() => {
         async function fetchData() {
             try {
-                const res = await axios.get("http://15.165.181.15:8080/info/signal")
+                // var c = Object.values(code)
+                // console.log(typeof c[0])
+                console.log(code)
+                const res = await axios.get("http://15.165.181.15:8080/info/signal", {
+                    params: {
+                        code
+                    }
+                }
+                )
                 setSignalinfo(res.data);
             }
             catch (e) {

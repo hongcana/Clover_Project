@@ -83,7 +83,7 @@ function ChartPage() {
             <Box sx={{
               padding: 3, width: 1, height: '50vh'
             }}>
-              <Signal />
+              <Signal stock_code = {Code}/>
             </Box>
           </Grid>
         </Grid>
