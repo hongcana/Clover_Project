@@ -2,7 +2,8 @@ import React, { useEffect, useState } from 'react'
 import SentimentSatisfiedAltIcon from '@mui/icons-material/SentimentSatisfiedAlt';
 import SentimentNeutralIcon from '@mui/icons-material/SentimentNeutral';
 import SentimentVeryDissatisfiedIcon from '@mui/icons-material/SentimentVeryDissatisfied';
-import { CircularProgress } from '@mui/material/CircularProgress'
+import { CircularProgress } from '@mui/material';
+
 import { Box, typography } from '@mui/system';
 import axios from 'axios'
 
