@@ -8,17 +8,16 @@ import SignalInfo from '../Data/signal.json';
 import axios from 'axios'
 
 
-function Signal(code) {
+function Signal(stock_code) {
     const [Signalinfo, setSignalinfo] = useState(null);
     useEffect(() => {
         async function fetchData() {
             try {
-                // var c = Object.values(code)
-                // console.log(typeof c[0])
-                console.log(code)
+                const code_num = Object.values(stock_code)
+
                 const res = await axios.get("http://15.165.181.15:8080/info/signal", {
                     params: {
-                        code
+                        "stock_code": code_num[0]
                     }
                 }
                 )
