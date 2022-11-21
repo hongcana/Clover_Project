@@ -35,13 +35,7 @@ function Signal(stock_code) {
     useEffect(() => {
         async function fetchData() {
             try {
-                const code_num = Object.values(stock_code)
-                const res = await axios.get("http://15.165.181.15:8080/info/signal", {
-                    params: {
-                        "stock_code": code_num[0]
-                    }
-                }
-                )
+                const res = await axios.get("http://15.165.181.15:8080/info/signal")
                 setSignalinfo(res.data);
                 if (Signalinfo === 1) {
                     setBoxColor('#03ac13')
@@ -58,7 +52,7 @@ function Signal(stock_code) {
                 console.error(e.message)
             }
         }
-        fetchData()
+        setTimeout(fetchData, 13000)
     }, [])
 
     return (
@@ -74,7 +68,7 @@ function Signal(stock_code) {
                 <icon
                     sx={{ fontSize: 100 }}
                 />
-                `${message}`
+                {message}
             </Box>
             <Box sx={{
                 padding: 3,
