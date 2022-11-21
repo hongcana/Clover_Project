@@ -9,7 +9,7 @@ import axios from 'axios'
 
 function Signal() {
     const [SignalInfo, setSignalInfo] = useState({ reliability: '계산중...' });
-    const [icon, setIcon] = useState(CircularProgress);
+    const [Icon, setIcon] = useState(CircularProgress);
     //    const [BoxStyle, setBoxStyle] = useState(null_BoxStyle);
     const [boxColor, setBoxColor] = useState('#ffffff')
     const [message, setMessage] = useState('계산중...')
@@ -66,7 +66,7 @@ function Signal() {
                     fontWeight: 550
                 }
             }}>
-                <icon
+                <Icon
                     sx={{ fontSize: 100 }}
                 />
                 {message}
