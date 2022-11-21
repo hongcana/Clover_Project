@@ -5,7 +5,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import axios from 'axios'
 
 function SearchBar() {
-    const [StockItem, setStockItem] = useState(StockItem);
+    const [StockItem, setStockItem] = useState([]);
     const keys = ['code', 'name']
     const [query, setQuery] = useState('');
     const [obj, setObj] = useState(null);
@@ -40,8 +40,7 @@ function SearchBar() {
                 }
             }
             pushData()
-            setTimeout(() => navigate(0), 2000)
-            //navigate("/chart", { state: { code: obj.code, name: obj.name, ex_path: location.pathname } })
+            navigate("/chart", { state: { code: obj.code, name: obj.name, ex_path: location.pathname } })
         }
     }, [obj])
     return (
