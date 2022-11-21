@@ -42,18 +42,20 @@ function Signal() {
                 console.error(e.message)
             }
         }
-        setTimeout(() => { fetchData() }, 14000).then(() => {
-            if (SignalInfo.signal === 1) {
-                setBoxColor('#03ac13')
-                setMessage('매수')
-                setIcon(SentimentSatisfiedAltIcon)
-            }
-            else {
-                setBoxColor('#ff0000')
-                setMessage('매도')
-                setIcon(SentimentNeutralIcon)
-            }
-        })
+        setTimeout(() => {
+            fetchData().then(() => {
+                if (SignalInfo.signal === 1) {
+                    setBoxColor('#03ac13')
+                    setMessage('매수')
+                    setIcon(SentimentSatisfiedAltIcon)
+                }
+                else {
+                    setBoxColor('#ff0000')
+                    setMessage('매도')
+                    setIcon(SentimentNeutralIcon)
+                }
+            })
+        }, 14000)
     }, [])
 
     return (

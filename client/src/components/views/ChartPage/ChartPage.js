@@ -12,12 +12,14 @@ import CloverLogo from '../../../styles/Img/Clover_logo.png';
 function ChartPage() {
   const location = useLocation();
   const navigate = useNavigate();
-  const Code = location.state.code
-  const Name = location.state.name
+  const [code, setCode] = useState('')
+  const [name, setName] = useState('')
 
   useEffect(() => {
-    navigate(0)
-  }, [Code])
+    code = setCode(location.state.code)
+    name = setName(location.state.name)
+    if (code != '') navigate(0)
+  }, [code, name])
   return (
     <Box>
       <Box sx={{ paddingTop: 5, paddingLeft: 10 }} className='TopBox'>
@@ -54,7 +56,7 @@ function ChartPage() {
                 }
               }}
             >
-              {Name}
+              {name}
             </Paper>
           </Grid>
           <Grid item xs={4}>
@@ -66,7 +68,7 @@ function ChartPage() {
                   color: '#00000ff'
                 }
               }}>
-              {Code}
+              {code}
             </Box>
           </Grid>
         </Grid>
