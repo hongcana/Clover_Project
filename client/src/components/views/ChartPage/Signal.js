@@ -3,13 +3,12 @@ import SentimentSatisfiedAltIcon from '@mui/icons-material/SentimentSatisfiedAlt
 import SentimentNeutralIcon from '@mui/icons-material/SentimentNeutral';
 import SentimentVeryDissatisfiedIcon from '@mui/icons-material/SentimentVeryDissatisfied';
 import { CircularProgress } from '@mui/material';
-
 import { Box, typography } from '@mui/system';
 import axios from 'axios'
 
 
-function Signal(stock_code) {
-    const [Signalinfo, setSignalinfo] = useState(null);
+function Signal() {
+    const [SignalInfo, setSignalInfo] = useState({ reliability: '계산중...' });
     const [icon, setIcon] = useState(CircularProgress);
     //    const [BoxStyle, setBoxStyle] = useState(null_BoxStyle);
     const [boxColor, setBoxColor] = useState('#ffffff')
@@ -37,23 +36,24 @@ function Signal(stock_code) {
         async function fetchData() {
             try {
                 const res = await axios.get("http://15.165.181.15:8080/info/signal")
-                setSignalinfo(res.data);
-                if (Signalinfo === 1) {
-                    setBoxColor('#03ac13')
-                    setMessage('매수')
-                    setIcon(SentimentSatisfiedAltIcon)
-                }
-                else {
-                    setBoxColor('#ff0000')
-                    setMessage('매도')
-                    setIcon(SentimentNeutralIcon)
-                }
+                setSignalInfo(res.data);
             }
             catch (e) {
                 console.error(e.message)
             }
         }
-        setTimeout(fetchData, 13000)
+        fetchData().then(() => {
+            if (SignalInfo === 1) {
+                setBoxColor('#03ac13')
+                setMessage('매수')
+                setIcon(SentimentSatisfiedAltIcon)
+            }
+            else {
+                setBoxColor('#ff0000')
+                setMessage('매도')
+                setIcon(SentimentNeutralIcon)
+            }
+        })
     }, [])
 
     return (
@@ -79,7 +79,7 @@ function Signal(stock_code) {
                     color: '#1aa7ec'
                 }
             }}>
-                신뢰도 : {Signalinfo.reliability}
+                신뢰도 : {SignalInfo.reliability}
             </Box>
         </Box>
     )
