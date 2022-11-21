@@ -20,7 +20,6 @@ function SearchBar() {
         async function fetchData() {
             try {
                 const res = await axios.get("http://15.165.181.15:8080/search/allItems")
-                console.log(res)
                 setStockItem(res.data)
             }
             catch (e) {
@@ -39,7 +38,7 @@ function SearchBar() {
                 }
                 catch (e) {
                     console.error(e.message)
-                }
+                }                                                       
             }
             pushData()
             navigate("/chart", { state: { code: obj.code, name: obj.name, ex_path: location.pathname } });

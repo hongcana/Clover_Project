@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useRef } from 'react';
-//import preConvertData from '../Data/price.json';
 import { createChart, CrosshairMode } from 'lightweight-charts';
 import { Paper } from '@mui/material';
 import axios from 'axios'

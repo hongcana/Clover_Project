@@ -2,19 +2,40 @@ import React, { useEffect, useState } from 'react'
 import SentimentSatisfiedAltIcon from '@mui/icons-material/SentimentSatisfiedAlt';
 import SentimentNeutralIcon from '@mui/icons-material/SentimentNeutral';
 import SentimentVeryDissatisfiedIcon from '@mui/icons-material/SentimentVeryDissatisfied';
+import { CircularProgress } from '@mui/material/CircularProgress'
 import { Box, typography } from '@mui/system';
-
-import SignalInfo from '../Data/signal.json';
 import axios from 'axios'
 
 
 function Signal(stock_code) {
     const [Signalinfo, setSignalinfo] = useState(null);
+    const [icon, setIcon] = useState(CircularProgress);
+    //    const [BoxStyle, setBoxStyle] = useState(null_BoxStyle);
+    const [boxColor, setBoxColor] = useState('#ffffff')
+    const [message, setMessage] = useState('계산중...')
+
+    const nullBoxStyle = {
+        padding: 7,
+        color: '#ffffff',
+        typography: {
+            fontSize: 50,
+            fontWeight: 550
+        }
+    }
+
+    const boxStyle = {
+        padding: 7,
+        color: `${boxColor}`,
+        typography: {
+            fontSize: 50,
+            fontWeight: 550
+        }
+    }
+
     useEffect(() => {
         async function fetchData() {
             try {
                 const code_num = Object.values(stock_code)
-
                 const res = await axios.get("http://15.165.181.15:8080/info/signal", {
                     params: {
                         "stock_code": code_num[0]
@@ -22,6 +43,16 @@ function Signal(stock_code) {
                 }
                 )
                 setSignalinfo(res.data);
+                if (Signalinfo === 1) {
+                    setBoxColor('#03ac13')
+                    setMessage('매수')
+                    setIcon(SentimentSatisfiedAltIcon)
+                }
+                else {
+                    setBoxColor('#ff0000')
+                    setMessage('매도')
+                    setIcon(SentimentNeutralIcon)
+                }
             }
             catch (e) {
                 console.error(e.message)
@@ -29,50 +60,21 @@ function Signal(stock_code) {
         }
         fetchData()
     }, [])
-    if (SignalInfo['signal'] === 1) { //Signalinfo 로 바꿀것.
-        return (
-            <Box>
-                <Box sx={{
-                    padding: 7,
-                    color: '#03ac13',
-                    typography: {
-                        fontSize: 50,
-                        fontWeight: 550
-                    }
-                }}>
-                    <SentimentSatisfiedAltIcon
-                        sx={{ fontSize: 100 }}
-                    />
-                    매수
-                </Box>
-                <Box sx={{
-                    padding: 3,
-                    typography: {
-                        fontSize: 50,
-                        fontWeight: 550,
-                        color: '#1aa7ec'
-                    }
-                }}>
-                    신뢰도 : {SignalInfo.reliability}
-                </Box>
-            </Box>
-        )
-    }
+
     return (
         <Box>
             <Box sx={{
                 padding: 7,
-                color: '#ff0000',
+                color: `${boxColor}`,
                 typography: {
                     fontSize: 50,
-                    fontWeight: 550,
-
+                    fontWeight: 550
                 }
             }}>
-                <SentimentNeutralIcon
+                <icon
                     sx={{ fontSize: 100 }}
                 />
-                매도
+                `${message}`
             </Box>
             <Box sx={{
                 padding: 3,
@@ -82,11 +84,9 @@ function Signal(stock_code) {
                     color: '#1aa7ec'
                 }
             }}>
-                신뢰도 : {SignalInfo.reliability}
+                신뢰도 : {Signalinfo.reliability}
             </Box>
         </Box>
     )
-
 }
-
 export default Signal
