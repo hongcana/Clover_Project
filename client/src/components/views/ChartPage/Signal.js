@@ -42,8 +42,8 @@ function Signal() {
                 console.error(e.message)
             }
         }
-        fetchData().then(() => {
-            if (SignalInfo === 1) {
+        setTimeout(() => { fetchData() }, 14000).then(() => {
+            if (SignalInfo.signal === 1) {
                 setBoxColor('#03ac13')
                 setMessage('매수')
                 setIcon(SentimentSatisfiedAltIcon)

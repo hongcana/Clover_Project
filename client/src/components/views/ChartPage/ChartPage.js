@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Box, typography } from '@mui/system';
 import { Grid, Paper } from '@mui/material';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
@@ -15,6 +15,9 @@ function ChartPage() {
   const Code = location.state.code
   const Name = location.state.name
 
+  useEffect(() => {
+    navigate(0)
+  }, [Code])
   return (
     <Box>
       <Box sx={{ paddingTop: 5, paddingLeft: 10 }} className='TopBox'>
@@ -83,7 +86,7 @@ function ChartPage() {
             <Box sx={{
               padding: 3, width: 1, height: '50vh'
             }}>
-              <Signal stock_code={Code} />
+              <Signal />
             </Box>
           </Grid>
         </Grid>

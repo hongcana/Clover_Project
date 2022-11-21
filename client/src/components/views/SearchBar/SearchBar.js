@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from 'react'
-// import StockItem from '../Data/Stocks.json';
 import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete'
 import { useLocation, useNavigate } from 'react-router-dom';
 import axios from 'axios'
 
 function SearchBar() {
-    const [StockItem, setStockItem] = useState([]);
+    const [StockItem, setStockItem] = useState(StockItem);
     const keys = ['code', 'name']
     const [query, setQuery] = useState('');
     const [obj, setObj] = useState(null);
@@ -38,10 +37,11 @@ function SearchBar() {
                 }
                 catch (e) {
                     console.error(e.message)
-                }                                                       
+                }
             }
             pushData()
-            navigate("/chart", { state: { code: obj.code, name: obj.name, ex_path: location.pathname } });
+            setTimeout(() => navigate(0), 2000)
+            //navigate("/chart", { state: { code: obj.code, name: obj.name, ex_path: location.pathname } })
         }
     }, [obj])
     return (

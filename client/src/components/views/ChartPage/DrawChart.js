@@ -11,7 +11,6 @@ function DrawChart() {
     const resizeObserver = useRef();
     const getData = async () => {
         try {
-            //시간거는 함수
             await axios.get("http://15.165.181.15:8080/info/data")
                 .then((res) => makeChart(convertData(res.data)));
         }
