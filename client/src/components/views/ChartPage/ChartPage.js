@@ -15,6 +15,9 @@ function ChartPage() {
   const code = location.state.code
   const name = location.state.name
 
+  useEffect(() => {
+    navigate(0)
+  }, [])
   return (
     <Box>
       <Box sx={{ paddingTop: 5, paddingLeft: 10 }} className='TopBox'>
