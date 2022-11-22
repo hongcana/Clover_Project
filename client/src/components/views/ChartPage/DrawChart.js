@@ -72,7 +72,7 @@ function DrawChart() {
             wickUpColor: "#ec6a5e"
         });
         candleSeries.setData(data)
-        //      if (Object.entries(data)[0][1] === '/')
+        candleSeries.update(data)
     }
 
     useEffect(() => { //차트 사이즈 조정
