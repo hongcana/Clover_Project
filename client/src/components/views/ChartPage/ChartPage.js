@@ -17,7 +17,7 @@ function ChartPage() {
   const isNotRefreshed = location.state.isNotRefreshed
 
   useEffect(() => {
-    if (isNotRefreshed) { location.state.isNotRefreshed = 0; navigate(0)}
+    if (isNotRefreshed) { navigate(0, { state: { isNotRefreshed: 0 } }) }
   }, [])
   return (
     <Box>

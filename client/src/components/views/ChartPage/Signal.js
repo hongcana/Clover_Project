@@ -5,6 +5,7 @@ import SentimentVeryDissatisfiedIcon from '@mui/icons-material/SentimentVeryDiss
 import { CircularProgress } from '@mui/material';
 import { Box, typography } from '@mui/system';
 import axios from 'axios'
+import { Navigate } from 'react-router-dom';
 
 
 function Signal() {
