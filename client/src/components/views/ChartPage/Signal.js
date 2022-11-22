@@ -9,7 +9,7 @@ import { Navigate } from 'react-router-dom';
 
 
 function Signal() {
-    const [SignalInfo, setSignalInfo] = useState();
+    const [SignalInfo, setSignalInfo] = useState({});
     const [Icon, setIcon] = useState(CircularProgress);
     //    const [BoxStyle, setBoxStyle] = useState(null_BoxStyle);
     const [boxColor, setBoxColor] = useState('#ffffff')
