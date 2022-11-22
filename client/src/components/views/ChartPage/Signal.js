@@ -17,7 +17,18 @@ function Signal() {
     const getData = async () => {
         try {
             const res = await axios.get("http://15.165.181.15:8080/info/signal")
-            setSignalInfo(res.data);
+            setSignalInfo((res.data), () => {
+                if (SignalInfo.signal === 1) {
+                    setBoxColor('#03ac13')
+                    setMessage('매수')
+                    setIcon(SentimentSatisfiedAltIcon)
+                }
+                else {
+                    setBoxColor('#ff0000')
+                    setMessage('매도')
+                    setIcon(SentimentNeutralIcon)
+                }
+            });
         }
         catch (e) {
             console.error(e.message)
@@ -28,16 +39,6 @@ function Signal() {
         setTimeout(() => {
             getData()
         }, 14000)
-        if (SignalInfo.signal === 1) {
-            setBoxColor('#03ac13')
-            setMessage('매수')
-            setIcon(SentimentSatisfiedAltIcon)
-        }
-        else {
-            setBoxColor('#ff0000')
-            setMessage('매도')
-            setIcon(SentimentNeutralIcon)
-        }
     }, [])
 
 
