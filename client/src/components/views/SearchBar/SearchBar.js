@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete'
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios'
 
 function SearchBar() {
@@ -13,7 +13,6 @@ function SearchBar() {
         return options.filter((item) => keys.some((key) => item[key].startsWith(inputValue)))
     }
     const navigate = useNavigate();
-    const location = useLocation();
 
     useEffect(() => {
         async function fetchData() {

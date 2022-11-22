@@ -1,7 +1,5 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Grid from '@mui/material/Grid';
-import { styled } from '@mui/material/styles';
-import { Paper } from '@mui/material';
 import { Box } from '@mui/system';
 import SearchBar from '../SearchBar/SearchBar.js';
 import CloverLogo from '../../../styles/Img/Clover_logo.png';

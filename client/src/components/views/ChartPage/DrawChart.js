@@ -1,11 +1,9 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { createChart, CrosshairMode } from 'lightweight-charts';
 import { Paper } from '@mui/material';
 import axios from 'axios'
 
 function DrawChart() {
-    const [stockData, setStockData] = useState([]);
-    const [convertedData, setConvertedData] = useState(null);
     const chartContainerRef = useRef();
     const chart = useRef();
     const resizeObserver = useRef();

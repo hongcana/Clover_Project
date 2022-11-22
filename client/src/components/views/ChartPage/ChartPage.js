@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react';
-import { Box, typography } from '@mui/system';
+import React from 'react';
+import { Box } from '@mui/system';
 import { Grid, Paper } from '@mui/material';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 import { DrawChart } from './DrawChart';
 import Signal from './Signal.js';
@@ -11,7 +11,6 @@ import CloverLogo from '../../../styles/Img/Clover_logo.png';
 
 function ChartPage() {
   const location = useLocation();
-  const navigate = useNavigate();
   const code = location.state.code
   const name = location.state.name
 

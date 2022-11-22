@@ -1,11 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import SentimentSatisfiedAltIcon from '@mui/icons-material/SentimentSatisfiedAlt';
 import SentimentNeutralIcon from '@mui/icons-material/SentimentNeutral';
-import SentimentVeryDissatisfiedIcon from '@mui/icons-material/SentimentVeryDissatisfied';
 import { CircularProgress } from '@mui/material';
-import { Box, typography } from '@mui/system';
+import { Box } from '@mui/system';
 import axios from 'axios'
-import { Navigate } from 'react-router-dom';
 
 
 function Signal() {
@@ -71,7 +69,6 @@ function Signal() {
                 }
             }}>
                 신뢰도 : {SignalInfo?.reliability || query}
-                {console.log(SignalInfo)}
             </Box>
         </Box>
     )
