@@ -43,7 +43,6 @@ function Signal() {
         }
         else {
             setBoxColor('#ffaa1d')
-            setIcon(SentimentVeryDissatisfiedIcon)
         }
     }, [SignalInfo])
 
