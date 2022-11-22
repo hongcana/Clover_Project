@@ -14,12 +14,7 @@ function ChartPage() {
   const navigate = useNavigate();
   const code = location.state.code
   const name = location.state.name
-  const isNotRefreshed = location.state.isNotRefreshed
 
-  useEffect(() => {
-    if (isNotRefreshed == 1) { navigate(0,{state: {isNotRefreshed : 0}}) }
-    else return
-  }, [isNotRefreshed])
   return (
     <Box>
       <Box sx={{ paddingTop: 5, paddingLeft: 10 }} className='TopBox'>

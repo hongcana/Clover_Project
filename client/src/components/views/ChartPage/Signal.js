@@ -11,27 +11,8 @@ import { Navigate } from 'react-router-dom';
 function Signal() {
     const [SignalInfo, setSignalInfo] = useState({});
     const [Icon, setIcon] = useState(CircularProgress);
-    //    const [BoxStyle, setBoxStyle] = useState(null_BoxStyle);
     const [boxColor, setBoxColor] = useState('#ffffff')
     const [message, setMessage] = useState('계산중...')
-
-    const nullBoxStyle = {
-        padding: 7,
-        color: '#ffffff',
-        typography: {
-            fontSize: 50,
-            fontWeight: 550
-        }
-    }
-
-    const boxStyle = {
-        padding: 7,
-        color: `${boxColor}`,
-        typography: {
-            fontSize: 50,
-            fontWeight: 550
-        }
-    }
 
     useEffect(() => {
         async function fetchData() {

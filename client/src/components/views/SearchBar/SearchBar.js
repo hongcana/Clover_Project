@@ -40,7 +40,8 @@ function SearchBar() {
                 }
             }
             pushData()
-            navigate("/chart", { state: { code: obj.code, name: obj.name, isNotRefreshed: 1 } })
+            navigate("/chart", { state: { code: obj.code, name: obj.name } })
+            window.location.reload()
         }
     }, [obj])
     return (
