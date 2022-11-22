@@ -11,17 +11,15 @@ function DrawChart() {
     const resizeObserver = useRef();
     const getData = async () => {
         try {
-            await axios.get("http://15.165.181.15:8080/info/data")
-                .then((res) => makeChart(convertData(res.data)));
+            const res = await axios.get("http://15.165.181.15:8080/info/data")
+            makeChart(convertData(res.data))
         }
         catch (e) {
             console.error(e.message)
         }
     }
     useEffect(() => {
-        setTimeout(() => {
-            getData()
-        }, 2000)
+        getData()
     }, [])
 
 
