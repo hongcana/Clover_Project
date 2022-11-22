@@ -41,7 +41,6 @@ function SearchBar() {
             }
             pushData()
             navigate("/chart", { state: { code: obj.code, name: obj.name } })
-            window.location.reload()
         }
     }, [obj])
     return (

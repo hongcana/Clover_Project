@@ -77,7 +77,7 @@ function DrawChart() {
     useEffect(() => { //차트 사이즈 조정
         resizeObserver.current = new ResizeObserver(entries => {
             const { width, height } = entries[0].contentRect;
-            chart.current?.applyOptions({ width, height });
+            chart.current.applyOptions({ width, height });
             setTimeout(() => {
                 chart.current.timeScale().fitContent();
             }, 0)
