@@ -12,10 +12,8 @@ function DrawChart() {
     const getData = async () => {
         try {
             const res = await axios.get("http://15.165.181.15:8080/info/data")
-            setStockData((res.data), () => {
-                createChart(convertData(stockData))
-            })
-
+            const convertedData = await convertData(res)
+            makeChart(convertedData)
         }
         catch (e) {
             console.error(e.message)
@@ -24,7 +22,7 @@ function DrawChart() {
     useEffect(() => {
         setTimeout(() => {
             getData()
-        }, 100)
+        }, 500)
     }, [])
 
 
