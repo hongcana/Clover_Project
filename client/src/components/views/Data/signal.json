@@ -1,10 +1,10 @@
 {
-  "stock_code": "023590",
-  "date": "2022-11-11",
-  "open": 19200,
-  "high": 19300,
-  "low": 18950,
-  "close": 19250,
+  "stock_code": "000000",
+  "date": "2099-12-31",
+  "open": 0,
+  "high": 0,
+  "low": 0,
+  "close": 0,
   "signal": 1,
-  "reliability": "보통"
+  "reliability": "계산중..."
 }

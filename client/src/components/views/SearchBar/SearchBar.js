@@ -40,7 +40,7 @@ function SearchBar() {
                 }
             }
             pushData()
-            navigate("/chart", { state: { code: obj.code, name: obj.name, ex_path: location.pathname } })
+            navigate("/chart", { state: { code: obj.code, name: obj.name } })
         }
     }, [obj])
     return (

@@ -12,14 +12,10 @@ import CloverLogo from '../../../styles/Img/Clover_logo.png';
 function ChartPage() {
   const location = useLocation();
   const navigate = useNavigate();
-  const [code, setCode] = useState('')
-  const [name, setName] = useState('')
+  code = location.state.code
+  name = location.state.name
 
-  useEffect(() => {
-    code = setCode(location.state.code)
-    name = setName(location.state.name)
-    if (code != '') navigate(0)
-  }, [code, name])
+
   return (
     <Box>
       <Box sx={{ paddingTop: 5, paddingLeft: 10 }} className='TopBox'>
