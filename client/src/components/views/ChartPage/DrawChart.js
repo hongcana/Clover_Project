@@ -21,7 +21,7 @@ function DrawChart() {
     useEffect(() => {
         setTimeout(() => {
             getData()
-        }, 1000)
+        }, 2000)
     }, [])
 
 
@@ -72,7 +72,6 @@ function DrawChart() {
             wickUpColor: "#ec6a5e"
         });
         candleSeries.setData(data)
-        candleSeries.update(data)
     }
 
     useEffect(() => { //차트 사이즈 조정
