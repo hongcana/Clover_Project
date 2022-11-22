@@ -82,6 +82,7 @@ function Signal() {
                 }
             }}>
                 신뢰도 : {SignalInfo?.reliability || message}
+                {console.log(SignalInfo)}
             </Box>
         </Box>
     )
