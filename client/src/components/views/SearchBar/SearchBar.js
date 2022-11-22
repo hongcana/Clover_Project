@@ -10,7 +10,7 @@ function SearchBar() {
     const [query, setQuery] = useState('');
     const [obj, setObj] = useState(null);
     const filteroption = (options, { inputValue }) => {
-        return options.filter((item) => keys.some((key) => item[key].startsWith( inputValue)))
+        return options.filter((item) => keys.some((key) => item[key].startsWith(inputValue)))
     }
     const navigate = useNavigate();
     const location = useLocation();
@@ -40,7 +40,7 @@ function SearchBar() {
                 }
             }
             pushData()
-            navigate("/chart", { state: { code: obj.code, name: obj.name } })
+            navigate("/chart", { state: { code: obj.code, name: obj.name, isNotRefreshed: 1 } })
         }
     }, [obj])
     return (

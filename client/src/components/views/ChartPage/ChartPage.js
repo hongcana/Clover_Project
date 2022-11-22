@@ -14,9 +14,10 @@ function ChartPage() {
   const navigate = useNavigate();
   const code = location.state.code
   const name = location.state.name
+  const isNotRefreshed = location.state.isNotRefreshed
 
   useEffect(() => {
-    navigate(0)
+    if (isNotRefreshed) { location.state.isNotRefreshed = 0; navigate(0)}
   }, [])
   return (
     <Box>
