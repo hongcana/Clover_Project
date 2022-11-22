@@ -21,7 +21,7 @@ function DrawChart() {
     useEffect(() => {
         setTimeout(() => {
             getData()
-        }, 10000)
+        }, 2000)
     }, [])
 
 

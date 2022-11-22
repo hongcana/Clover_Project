@@ -40,6 +40,9 @@ function SearchBar() {
                 }
             }
             pushData()
+            if (window.location.pathname === '/chart') {
+                navigate(0)
+            }
             navigate("/chart", { state: { code: obj.code, name: obj.name } })
         }
     }, [obj])
