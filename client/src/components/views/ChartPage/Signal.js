@@ -12,7 +12,8 @@ function Signal() {
     const [SignalInfo, setSignalInfo] = useState({});
     const [Icon, setIcon] = useState(CircularProgress);
     const [boxColor, setBoxColor] = useState('#ffffff')
-    const [message, setMessage] = useState('계산중...')
+    const [message, setMessage] = useState('')
+    const query = '계산중...'
 
     const getData = async () => {
         try {
@@ -23,22 +24,26 @@ function Signal() {
             console.error(e.message)
         }
     }
-
     useEffect(() => {
         setTimeout(() => {
-            getData().then(() => {
-                if (SignalInfo.signal === 1) {
-                    setBoxColor('#03ac13')
-                    setMessage('매수')
-                    setIcon(SentimentSatisfiedAltIcon)
-                }
-                else {
-                    setBoxColor('#ff0000')
-                    setMessage('매도')
-                    setIcon(SentimentNeutralIcon)
-                }
-            })
-        }, 14000)
+            getData()
+        }, 14000);
+    }, [])
+
+    useEffect(() => {
+        if (SignalInfo.signal === 1) {
+            setBoxColor('#03ac13')
+            setMessage('매수')
+            setIcon(SentimentSatisfiedAltIcon)
+        }
+        else if (SignalInfo.signal === 0) {
+            setBoxColor('#ff0000')
+            setMessage('매도')
+            setIcon(SentimentNeutralIcon)
+        }
+        else {
+            setBoxColor('#ffaa1d')
+        }
     }, [SignalInfo])
 
 
@@ -65,7 +70,7 @@ function Signal() {
                     color: '#1aa7ec'
                 }
             }}>
-                신뢰도 : {SignalInfo?.reliability || message}
+                신뢰도 : {SignalInfo?.reliability || query}
                 {console.log(SignalInfo)}
             </Box>
         </Box>

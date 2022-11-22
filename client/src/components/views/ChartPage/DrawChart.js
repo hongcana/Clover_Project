@@ -11,9 +11,9 @@ function DrawChart() {
     const resizeObserver = useRef();
     const getData = async () => {
         try {
-            const res = await axios.get("http://15.165.181.15:8080/info/data")
-            const convertedData = await convertData(res)
-            makeChart(convertedData)
+            const res = await axios.get("http://15.165.181.15:8080/info/data").then(
+                makeChart(convertData(res.data))
+            )
         }
         catch (e) {
             console.error(e.message)
