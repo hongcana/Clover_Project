@@ -38,7 +38,7 @@ function Signal() {
             setMessage('매도')
             setIcon(SentimentNeutralIcon)
         }
-    }, [])
+    }, [SignalInfo])
 
 
     return (
