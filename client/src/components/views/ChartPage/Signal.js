@@ -8,7 +8,7 @@ import axios from 'axios'
 
 
 function Signal() {
-    const [SignalInfo, setSignalInfo] = useState({});
+    const [SignalInfo, setSignalInfo] = useState();
     const [Icon, setIcon] = useState(CircularProgress);
     //    const [BoxStyle, setBoxStyle] = useState(null_BoxStyle);
     const [boxColor, setBoxColor] = useState('#ffffff')
@@ -37,9 +37,6 @@ function Signal() {
             try {
                 const res = await axios.get("http://15.165.181.15:8080/info/signal")
                 setSignalInfo(res.data);
-                console.log('hi')
-                console.log(SignalInfo)
-                console.log('hi')
             }
             catch (e) {
                 console.error(e.message)
@@ -47,8 +44,7 @@ function Signal() {
         }
         setTimeout(() => {
             fetchData().then(() => {
-                console.log(SignalInfo)
-                if (SignalInfo.signal === 1) {
+                if (SignalInfo.signal === "1") {
                     setBoxColor('#03ac13')
                     setMessage('매수')
                     setIcon(SentimentSatisfiedAltIcon)
@@ -85,7 +81,7 @@ function Signal() {
                     color: '#1aa7ec'
                 }
             }}>
-                신뢰도 : {SignalInfo.reliability || message}
+                신뢰도 : {SignalInfo?.reliability || message}
             </Box>
         </Box>
     )

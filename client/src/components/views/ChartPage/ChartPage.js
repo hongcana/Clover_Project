@@ -12,8 +12,8 @@ import CloverLogo from '../../../styles/Img/Clover_logo.png';
 function ChartPage() {
   const location = useLocation();
   const navigate = useNavigate();
-  code = location.state.code
-  name = location.state.name
+  const code = location.state.code
+  const name = location.state.name
 
 
   return (
